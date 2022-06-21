@@ -41,6 +41,7 @@ table.cinereousTable tfoot td {
     <th>id</th>
     <th>Nombre</th>
     <th>Edad</th>
+    <th>Cargo</th>
     <th>Status</th>
     <th>Opciones</th>
     
@@ -51,8 +52,10 @@ table.cinereousTable tfoot td {
     <!-- prueba inicia -->
 
     <tr *ngFor="let employee of employeesList">
-      <td>{{employee.id}}</td><td>{{employee.name}}</td><td>{{employee.age}}</td><td><select name="status" id="status"><option value="Activo">activo</option><option value="inactivo">inactivo</option></select></td>
-        <button>Modificar</button>
+      <td>{{employee.id}}</td><td>{{employee.name}}</td><td>{{employee.age}}</td>
+      <td>{{employee.cargos[0].name}}</td>
+      <td>{{employee.status}}</td>
+        <button [routerLink]="['/home/update', employee.id]">Modificar</button>
         <button (click)="deleteEmployee(employee.id)" >Eliminar</button>
       </tr>
 

@@ -16,8 +16,8 @@ module.exports = ((sequelize)=>{
             allowNull: false
         },
         status:{
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
+            type: DataTypes.STRING,
+            defaultValue: "Activo"
         }
     })
     

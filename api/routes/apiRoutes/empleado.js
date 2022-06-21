@@ -37,14 +37,53 @@ router.get('/', async (req, res)=>{
   }
 })
 
+router.get('/:id', async(req, res)=>{
+  try{
+    const {id} = req.params;
+    const employee = await Empleado.findOne({
+      where: {
+        id: id
+      },
+      include: Cargo
+
+    })
+    res.send(employee)
+
+  }
+  catch(err){
+    console.error(err)
+  }
+})
+
 
 router.put('/:id', async (req, res)=>{
   try{
 
-    await Empleado.update(req.body, {
+   await Empleado.update(req.body, {
       where: { id: req.params.id },
     });
-    res.json({ success: "Employee has been modiefied" });
+    const {cargo} = req.body
+    const {id} = req.params.id
+    
+    const employee = await Empleado.findOne({where:{id: req.params.id}})
+
+    
+     
+
+
+    let workerPosition  = await Cargo.findOne({
+      where: {name : cargo}
+    })
+
+    let currentCargo = await Cargo.findAll()
+
+    
+
+    await employee.removeCargo(currentCargo)
+    await employee.addCargo(workerPosition)
+
+   // message: "succes"
+    res.json({message: "succes"});
   }
   catch(err){
     console.error(err)

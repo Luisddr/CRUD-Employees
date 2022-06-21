@@ -13,6 +13,9 @@ export class EmployeesService {
     return this.http.get('http://localhost:3001/empleados')
   };
 
+  getEmployeeById(id:number){
+    return this.http.get(`http://localhost:3001/empleados/${id}`)
+  }
 
   getPositions(){
     return this.http.get('http://localhost:3001/cargos')

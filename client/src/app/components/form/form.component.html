@@ -4,8 +4,8 @@
       <input type="text" name="name" [(ngModel)]="employee.name" class="form-control" id="name">
     </div>
     <div class="col-md-6">
-      <label for="inputBirthday" class="form-label">Fecha de nacimiento</label>
-      <input type="date" name="birthday" [(ngModel)]="employee.birthday" class="form-control" id="inputBirthday">
+      <label for="inputBirthday" class="form-label">Fecha de nacimiento (dd-mm-aaaa)</label>
+      <input type="text" name="birthday" [(ngModel)]="employee.birthday" class="form-control" id="inputBirthday">
     </div>
     <div class="col-md-2">
       <label for="inputAge" class="form-label">Edad</label>
@@ -15,12 +15,19 @@
     <div class="col-md-4">
       <label for="inputState" class="form-label">Puesto</label>
       <select name="cargo" [(ngModel)]="employee.cargo"  id="inputState"  class="form-select">
-        <option selected>Choose...</option>
-        <option *ngFor="let position of positionsList">{{position.name}}</option>
+        <option selected *ngFor="let position of positionsList">{{position.name}}</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label for="inputStatus" class="form-label">Status</label>
+      <select name="status" [(ngModel)]="employee.status"  id="inputStatus"  class="form-select">
+        <option selected >Activo</option>
+        <option >Inactivo</option>
       </select>
     </div>
 
     <div class="col-12">
-      <button type="submit" class="btn btn-primary" (click)="saveEmployee()">Sign in</button>
+      <button type="submit" class="btn btn-primary" (click)="upDate? upDateEmployee() :saveEmployee()">Guardar</button>
     </div>
   </form>

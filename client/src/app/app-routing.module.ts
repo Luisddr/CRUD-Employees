@@ -16,7 +16,12 @@ const routes: Routes = [
   {
     path: 'home/add',
     component: FormComponent
+  },
+  {
+    path:'home/update/:id',
+    component:FormComponent
   }
+
 ];
 
 @NgModule({
